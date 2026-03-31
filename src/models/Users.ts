@@ -1,8 +1,10 @@
-const { Sequelize, DataTypes } = require("sequelize");
+import { Sequelize, DataTypes } from "sequelize";
 
-const db = require('../config/config.js');
+//const { Sequelize, DataTypes } = require("sequelize");
 
-const Users = db.define('users', {
+import { sequelize_config } from '../config/config';
+
+export const Users = sequelize_config.define('users', {
     id: {
         type: DataTypes.BIGINT,
         allowNull: false,
@@ -23,5 +25,3 @@ const Users = db.define('users', {
         field: 'password'
     }
 })
-
-module.exports = Users;

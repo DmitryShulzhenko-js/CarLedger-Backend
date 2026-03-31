@@ -10,7 +10,7 @@ const db_host = process.env.DB_HOST
 const db_port = process.env.DB_PORT
 const timezone = process.env.TIMEZONE
 
-const sequelize_config = new Sequelize(db_name, db_user, db_password, {
+export const sequelize_config = new Sequelize(db_name, db_user, db_password, {
     host: db_host,
     port: db_port,
     // host: process.env.POSTGRES_PORT_5432_TCP_ADDR,
@@ -34,10 +34,8 @@ const sequelize_config = new Sequelize(db_name, db_user, db_password, {
     }
 });
 
-const modelSync = async (Model) => { // согласно переданной модели создает таблицу, если ее нет в БД
-    // await Model.sync().then(() => { // надо проверить настройки функции
-        console.log('The table for the model was just (re)created!')
-    // }).catch(err => console.log(err))
-};
-
-module.exports = sequelize_config;
+// const modelSync = async (Model) => { // согласно переданной модели создает таблицу, если ее нет в БД
+//     // await Model.sync().then(() => { // надо проверить настройки функции
+//         console.log('The table for the model was just (re)created!')
+//     // }).catch(err => console.log(err))
+// };

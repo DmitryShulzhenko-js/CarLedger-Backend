@@ -9,6 +9,10 @@ import bcrypt from "bcryptjs";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import { env } from './config/env';
+import { Users } from "./models/Users";
+import { login, refreshToken, registration, logout } from "./routes/auth";
+import { test } from "./routes/test";
+import { authMiddleware } from "./middleware/auth";
 
 const { Sequelize } = require("sequelize");
 
@@ -39,6 +43,12 @@ app.use(
     },
   }),
 );
+
+app.get('/refreshToken', refreshToken);
+app.post('/login', login);
+app.get('/registration', registration);
+app.get('/logout', logout);
+app.get('/test', authMiddleware, test);
 
 
 app.listen(PORT, () => {
